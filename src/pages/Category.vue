@@ -16,6 +16,32 @@
         </q-card-section>
     </q-card>
 
+    <q-card class="my-card">
+        <q-card-section >
+            <div class="row justify-between">
+                <q-pagination
+                    class=""
+                    v-show="order!='Rand'" 
+                    v-model="page"
+                    color="amber-10"
+                    :max="getNumPages"
+                    :max-pages="6"
+                    :boundary-numbers="true"
+                > 
+                </q-pagination>
+                <q-select
+                    class=""
+                    style="width: 200px"
+                    outlined
+                    color="amber-10"
+                    v-model="limit"
+                    :options="options"
+                    label="Limite"
+                />
+            </div>  
+        </q-card-section>
+    </q-card>
+
   </div>
 </q-page>
 </template>
@@ -30,6 +56,7 @@ export default {
         order:'Desc',
         page: 1,
         limit: 3,
+        options: ['3', '6', '9'],
         pagination_count: 0, //default until we get a result with the 'Pagination-Count' header in the response
     }
   },
@@ -75,14 +102,14 @@ export default {
             console.log("-- ("+this.categories.length +") Categories from TheCatAPI.com")
                     
             // pick one to display initially
-            this.selected_category = this.categories[2]
+            this.selected_category = this.categories[0]
         }catch(err){
             console.log(err)
         }
     },
     async getImages () {
         try{
-            this.$axios.defaults.headers.common['x-api-key'] = "DEMO-API-KEY" // Replace this with your API Key
+            this.$axios.defaults.headers.common['x-api-key'] = "d9abbb1b-f94a-4ebf-b592-b2466f57d815" // Replace this with your API Key
                     
             let query_params = {
                 limit: this.limit,

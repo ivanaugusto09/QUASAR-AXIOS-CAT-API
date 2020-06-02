@@ -29,8 +29,16 @@
         <div class="text-subtitle q-mt-lg text-center">MIAUW</div>
       </q-card-section>
     </q-card>
-
   </div>
+  <!-- <div class="row justify-center">
+        <q-table
+            title="Votos"
+            :data="votes"
+            :columns="headers"
+            row-key="name"
+            
+        />
+    </div> -->
 </q-page>
 </template>
 
@@ -39,15 +47,15 @@ export default {
   data () {
     return {
       image: {url: ""},
-      sub_id: "User-123",
+      sub_id: "d9abbb1b-f94a-4ebf-b592-b2466f57d815",
       image:{},
       votes:[],
         headers: [
-            { text: 'date' },
-            { text: 'image_id' },
-            { text: 'value' },
-            { text: 'sub_id' },
-            { text: 'country' }
+            { name: 'date', label: 'Date' },
+            { name: 'image_id', label: 'Image-ID' },
+            { name: 'value', label: 'Valor' },
+            { name: 'sub_id', label: 'Sub-ID' },
+            { name: 'country', label: 'PAÍS' }
           ],
     }
   },
@@ -102,7 +110,7 @@ export default {
 
       response.data.forEach(element => {
         //element.created_at = new Date(element.created_at).toString();// full time string including timezone
-        //element.created_at = new Date(element.created_at).toJSON().slice(0,10)// just use the date for now
+        element.created_at = new Date(element.created_at).toJSON().slice(0,10)// just use the date for now
       });
 
       this.votes = response.data;

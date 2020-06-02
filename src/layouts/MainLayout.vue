@@ -60,7 +60,7 @@ export default {
         { icon: 'pets', title: 'CATS', link: '/'},      
         { icon: 'how_to_vote', title: 'VOTAR', link: '/voting'},
         { icon: 'category', title: 'CATEGORIA', link: '/category'},
-        { icon: 'waves', title: 'RAÇAS', link: '/login'},
+        { icon: 'waves', title: 'FAVORITAR', link: '/favourites'},
       ]
       return  menuItems     
     }
